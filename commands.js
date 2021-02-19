@@ -1,5 +1,6 @@
 const welcomeMessage = require("./commands/welcomeMessage.js");
 
+
 // function lookup object
 const commands = { welcomeMessage }
 
