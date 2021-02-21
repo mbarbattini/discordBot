@@ -12,8 +12,6 @@ function readyDiscord() {
 client.on("ready", readyDiscord);
 
 const commandHandler = require("./commands");
-// const mainChannel = client.channels.cache.get('529460715598381056');
-// mainChannel = "529460715598381056";
 
 client.on("message", commandHandler);
 
@@ -27,14 +25,14 @@ names = [
 
 tricky = function() {
     index = Math.floor(Math.random() * names.length);
-    return names[index] + " is a mines motherfucker.";
-
+    return names[index] + " is a Mines motherfucker.";
 }
 
-// random Mines Motherfucker message
+// random Mines Motherfucker message in General channel
 client.on("message", msg => {
-    randNumber = Math.floor(Math.random()*10);
-    if (msg.channel.id === "529460715598381056" && randNumber < 2 && !msg.author.bot) {
+    console.log("Tricky function called.");
+    let randNumber = Math.floor(Math.random()*10);
+    if (msg.channel.id === "529460715598381056" && randNumber < 5 && !msg.author.bot) {
         msg.reply(tricky());    
     }
 }); 
