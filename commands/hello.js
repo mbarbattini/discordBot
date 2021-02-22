@@ -6,7 +6,11 @@ const welcomeReplies = [
     "Welcome to the server, motherfucker."
 ]
 
-module.exports = function(msg, args) {
-    index = Math.floor(Math.random() * welcomeReplies.length);
-    msg.channel.send(welcomeReplies[index]);
-}
+module.exports = {
+    name: 'hello',
+    description: 'Greets the user.',
+    execute(msg) {
+        index = Math.floor(Math.random() * welcomeReplies.length);
+        msg.channel.send(welcomeReplies[index]);
+    },
+};
