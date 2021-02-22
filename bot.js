@@ -1,8 +1,8 @@
-require("dotenv").config();
+const config = require("./config.json");
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-client.login(process.env.BOTTOKEN);
+client.login(config.token);
 
 function readyDiscord() {
     console.log("Bot running.");
@@ -37,3 +37,9 @@ client.on("message", msg => {
     }
 }); 
 
+client.on("ready", () => {
+    let generalChannel = client.channels.get("529460715598381056");
+    let interval = setInterval(function () {
+        generalChannel.send("Hello");
+    }, 1 * 1000);
+});
