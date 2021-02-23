@@ -6,7 +6,7 @@ const fs = require('fs');
 const Discord = require("discord.js");
 
 const client = new Discord.Client();
-// client.user.setAvatar('./avatar.webp');
+
 
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -19,6 +19,7 @@ for (const file of commandFiles) {
 
 client.once("ready", () => {
     console.log('Ready!');
+    console.log(client.user.bot);
 });
 
 // dynamic command handler
@@ -39,6 +40,9 @@ client.on('message', message => {
 });
 
 client.login(token);
+
+// client.user.setAvatar('./avatar.webp');
+// client.user.setActivity('Watching over...');
 
 
 
@@ -71,7 +75,7 @@ client.on("message", msg => {
 
 // random Mines Motherfucker message in general testing channel
 client.on("message", msg => {
-    let randNumber = Math.floor(Math.random()*100);
+    const randNumber = Math.floor(Math.random()*100);
     if (msg.channel.id === "529460715598381056" && randNumber < 5 && !msg.author.bot) {
         msg.reply(tricky());    
     }
